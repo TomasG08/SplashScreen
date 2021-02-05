@@ -9,6 +9,7 @@
     android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/loginImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/logo_fenix"
@@ -32,7 +33,8 @@
         android:layout_height="wrap_content"
         android:text="Inicia sesión para continuar"
         android:textSize="24sp"
-        android:fontFamily="@font/abel"/>
+        android:fontFamily="@font/abel"
+        android:transitionName="iniciaSesionTextTrans"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +46,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:id="@+id/usuarioTextFieldEmail"
+            android:id="@+id/usuarioTextField"
+            android:transitionName="emailInputTextTrans"
             android:hint="Email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
@@ -58,8 +61,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:id="@+id/usuarioTextFieldPassword"
+            android:id="@+id/contrasenaTextField"
             android:hint="Contraseña"
+            android:transitionName="passwordInputTextTrans"
             app:passwordToggleEnabled="true"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
@@ -89,7 +93,8 @@
             android:layout_height="wrap_content"
             android:text="INICIO"
             android:layout_marginTop="12dp"
-            android:layout_marginBottom="70dp"/>
+            android:layout_marginBottom="70dp"
+            android:transitionName="buttonSignInTrans"/>
 
         <TextView
             android:id="@+id/nuevoUsuario"
@@ -103,7 +108,8 @@
             android:clickable="true"
             android:focusable="true"
             android:textStyle="bold"
-            android:text="Eres nuevo? Registrate!"/>
+            android:text="Eres nuevo? Registrate!"
+            android:transitionName="newUserTrans"/>
     </LinearLayout>
 
 </LinearLayout>
