@@ -17,6 +17,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -42,9 +47,15 @@ public class MainActivity extends AppCompatActivity {
         logoImageView.setAnimation(animation1);
 
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        new Handler().postDelayed(() -> {
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(MainActivity.this);
+            if(user != null && account != null){
+                Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                startActivity(intent);
+                finish();
+            }else{
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 Pair[] pairs = new Pair[2];
                 pairs[0] = new Pair<View, String>(logoImageView, "logoImageTrans");
@@ -58,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }
             }
+
         },4000);
 
     }
